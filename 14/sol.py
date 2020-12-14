@@ -59,8 +59,11 @@ def part2(f):
 
             new_mask = list(mask)
             for i in range(-1, -len(loc_bin) - 1, -1):
-                if loc_bin[i] == "1" and mask[i] == "0":
-                    new_mask = mask[:i] + "1" + mask[i + 1:]
+                if loc_bin[i] == '1' and mask[i] == '0':
+                    if i == -1:
+                        new_mask = new_mask[:i] + ["1"]
+                    else:
+                        new_mask = new_mask[:i] + ["1"] + new_mask[i + 1:]
 
             masks = generateAllBinary(new_mask)
             for m in masks:
